@@ -4,7 +4,7 @@ export const site = {
   title: "Chief Imam · Islamic Scholar · Educator · Researcher",
   description:
     "The digital headquarters of Abubakar, Abdulahi Olayinka: Chief Imam, founder of Al-Mafaazat Arabic and Islamic Training Centre, educator, and educational researcher working at the intersection of Islamic scholarship, education, research and technology.",
-  url: "https://abubakarolayinka.com",
+  url: "https://ustazabdullah-website.vercel.app",
   email: "fursanulbayan@gmail.com",
   mosqueEmail: "markazmafaazat@gmail.com",
   phone: "+2347083135638",
