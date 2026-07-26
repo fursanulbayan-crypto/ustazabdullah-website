@@ -33,42 +33,43 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
-  title: {
-    default: `${site.name} | ${site.title}`,
-    template: `%s | ${site.shortName}`,
-  },
-  description: site.description,
-  keywords: [
-    "Islamic scholar Lagos", "Chief Imam Nigeria", "Islamic Studies educator",
-    "Arabic language teacher", "Al-Mafaazat Training Centre", "Islamic education research",
-  ],
-  authors: [{ name: site.name }],
-  openGraph: {
-          type: "website",
-          url: site.url,
-          title: site.name,
-          description: site.description,
-          siteName: site.name,
-          images: [
+    metadataBase: new URL(site.url),
+    title: {
+        default: `${site.name} | ${site.title}`,
+        template: `%s | ${site.shortName}`,
+    },
+    description: site.description,
+    keywords: [
+        "Islamic scholar Lagos", "Chief Imam Nigeria", "Islamic Studies educator",
+        "Arabic language teacher", "Al-Mafaazat Training Centre", "Islamic education research",
+    ],
+    authors: [{name: site.name}],
+    openGraph: {
+        type: "website",
+        url: site.url,
+        title: site.name,
+        description: site.description,
+        siteName: site.name,
+        images: [
             {
-              url: "/images/og-image.png",
-              width: 1200,
-              height: 630,
-              alt: `${site.name} — ${site.title}`,
+                url: "/images/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: `${site.name} — ${site.title}`,
             },
-          ],
-        },
-  twitter: {
-          card: "summary_large_image",
-          title: site.name,
-          description: site.description,
-          images: ["/images/og-image.png"],
-        },
-  alternates: { canonical: site.url },
-        verification: {
-          google: "eWDVSv1nxg8x_l17YjP0pyrUwM-K6kdIEe_zaR-_g-g",
-        },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: site.name,
+        description: site.description,
+        images: ["/images/og-image.png"],
+    },
+    alternates: {canonical: site.url},
+    verification: {
+        google: "eWDVSv1nxg8x_l17YjP0pyrUwM-K6kdIEe_zaR-_g-g",
+    },
+};
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
