@@ -20,36 +20,34 @@ export const site = {
 
 export const navLinks = [
   { label: "About", href: "/about" },
-  { label: "Expertise", href: "/expertise" },
   {
-    label: "Research",
-    href: "/research",
+    label: "Services",
+    href: "/academy",
     children: [
-      { label: "Research Portfolio", href: "/research" },
+      { label: "Academy", href: "/academy" },
+      { label: "Speaking", href: "/speaking" },
+      { label: "Tools", href: "/tools" },
+    ],
+  },
+  {
+    label: "Knowledge",
+    href: "/knowledge-centre",
+    children: [
+      { label: "Knowledge Centre", href: "/knowledge-centre" },
       { label: "Articles", href: "/articles" },
+      { label: "Research", href: "/research" },
       { label: "Resources", href: "/resources" },
     ],
   },
-  { label: "Islamic Knowledge", href: "/knowledge-centre" },
   {
-    label: "Academy",
-    href: "/academy",
+    label: "Impact",
+    href: "/sdg-projects",
     children: [
-      { label: "Overview", href: "/academy" },
-      { label: "Teaching", href: "/teaching" },
+      { label: "SDG Projects", href: "/sdg-projects" },
+      { label: "Gallery", href: "/gallery" },
+      { label: "Media", href: "/media" },
     ],
   },
-  {
-    label: "Speaking",
-    href: "/speaking",
-    children: [
-      { label: "Speaking Topics", href: "/speaking" },
-      { label: "Book Me", href: "/book" },
-    ],
-  },
-  { label: "SDG Projects", href: "/sdg-projects" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Media", href: "/media" },
   { label: "FAQs", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
@@ -57,14 +55,16 @@ export const navLinks = [
 export const footerLinks = [
   { label: "About", href: "/about" },
   { label: "Academy", href: "/academy" },
-  { label: "Research", href: "/research" },
-  { label: "Articles", href: "/articles" },
   { label: "Speaking", href: "/speaking" },
-  { label: "Book Me", href: "/book" },
+  { label: "Tools", href: "/tools" },
+  { label: "Knowledge Centre", href: "/knowledge-centre" },
+  { label: "Articles", href: "/articles" },
+  { label: "Research", href: "/research" },
   { label: "SDG Projects", href: "/sdg-projects" },
+  { label: "Book Me", href: "/book" },
+  { label: "FAQs", href: "/faq" },
   { label: "Contact", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "FAQs", href: "/faq" },
   { label: "Terms", href: "/terms" },
 ];
 

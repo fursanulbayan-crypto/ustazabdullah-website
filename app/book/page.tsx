@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ExternalLink, Mail } from "lucide-react";
+import { ArrowRight, ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
 import { site } from "@/lib/data";
-import { bookingFaqs } from "@/lib/booking";
 import { Testimonials } from "@/components/home/Testimonials";
 import { ServiceCards } from "@/components/book/ServiceCards";
 import { BookingTimeline } from "@/components/book/BookingTimeline";
@@ -11,6 +10,7 @@ import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { EightPointRose } from "@/components/ui/EightPointRose";
+import { bookingFaqs } from "@/lib/booking";
 
 export const metadata: Metadata = {
   title: "Book Abubakar, Abdulahi Olayinka",
@@ -33,14 +33,16 @@ export default function BookPage() {
             <Reveal delay={80}>
               <h1 className="font-display text-[clamp(2.1rem,4.5vw,3.2rem)] font-medium leading-[1.1] tracking-tight text-ink dark:text-beige-100">
                 Bring Ustaz Abdullah to your{" "}
-                <span className="italic text-emerald-800 dark:text-emerald-600">event, mosque or institution.</span>
+                <span className="italic text-emerald-800 dark:text-emerald-600">
+                  event, mosque or institution.
+                </span>
               </h1>
             </Reveal>
             <Reveal delay={160}>
               <p className="mt-6 max-w-xl leading-relaxed text-ink/65 dark:text-beige-100/65">
-                Over 100 lectures delivered for conference organisers, educational institutions, mosques,
-                NGOs, schools, universities and media organisations, in English and Arabic, in person and
-                online.
+                Over 100 lectures delivered for conference organisers, educational institutions,
+                mosques, NGOs, schools, universities and media organisations, in English and Arabic,
+                in person and online.
               </p>
             </Reveal>
             <Reveal delay={240}>
@@ -53,9 +55,32 @@ export default function BookPage() {
                 >
                   Request a Booking <ExternalLink size={15} />
                 </a>
-                <a href="#services" className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3.5 text-sm text-ink hover:border-gold-500 dark:border-beige-100/15 dark:text-beige-100">
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3.5 text-sm text-ink hover:border-gold-500 dark:border-beige-100/15 dark:text-beige-100"
+                >
                   View Services
                 </a>
+              </div>
+
+              {/* Form journey note */}
+              <div className="mt-6 rounded-xl border border-ink/10 bg-beige-100/60 p-4 dark:border-beige-100/10 dark:bg-emerald-900/30">
+                <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold-600 dark:text-gold-300">
+                  What happens after you submit
+                </p>
+                <div className="space-y-2">
+                  {[
+                    "You will receive a reply within 2 working days",
+                    "Submitting the form is an enquiry only, not a confirmed booking",
+                    "A short conversation follows to agree details before anything is confirmed",
+                    "Your information is used only to respond to your request",
+                  ].map((s) => (
+                    <div key={s} className="flex items-start gap-2 text-xs text-ink/65 dark:text-beige-100/65">
+                      <CheckCircle size={12} className="mt-0.5 shrink-0 text-gold-500" />
+                      {s}
+                    </div>
+                  ))}
+                </div>
               </div>
             </Reveal>
           </div>
@@ -129,12 +154,15 @@ export default function BookPage() {
       <section className="mx-auto max-w-6xl px-6 py-24">
         <Reveal>
           <div className="rounded-3xl bg-emerald-900 p-10 text-center lg:p-16">
-            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-gold-300">Ready when you are</p>
+            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-gold-300">
+              Ready when you are
+            </p>
             <h2 className="font-display text-2xl font-medium text-beige-100 sm:text-3xl">
               Let&apos;s plan your event.
             </h2>
             <p className="mx-auto mt-3 max-w-md text-sm text-beige-100/70">
-              Share your details in the booking form and expect a reply to start the conversation.
+              Share your details in the booking form and expect a reply within 2 working days to
+              start the conversation. Submitting is an enquiry, not a confirmed booking.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <a
@@ -152,6 +180,13 @@ export default function BookPage() {
                 <Mail size={15} /> Email Directly
               </a>
             </div>
+            <p className="mt-4 text-xs text-beige-100/40">
+              Your information is used only to respond to your enquiry. See our{" "}
+              <Link href="/privacy-policy" className="underline underline-offset-2">
+                Privacy Policy
+              </Link>
+              .
+            </p>
           </div>
         </Reveal>
       </section>

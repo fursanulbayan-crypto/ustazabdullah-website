@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ExternalLink, Mail } from "lucide-react";
+import { ArrowRight, ExternalLink, Mail, MessageCircle, CheckCircle } from "lucide-react";
 import { site } from "@/lib/data";
 import { academyFaqs } from "@/lib/academy";
 import { Testimonials } from "@/components/home/Testimonials";
@@ -22,8 +22,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   name: "Al-Mafaazat Arabic & Islamic Training Centre",
-  description:
-    "Arabic Language, Qur'anic Education and Islamic Studies, physical and online.",
+  description: "Arabic Language, Qur'anic Education and Islamic Studies, physical and online.",
   address: {
     "@type": "PostalAddress",
     streetAddress: "32, Ojikutu Road, Heritage Estate",
@@ -35,9 +34,9 @@ const schema = {
 
 const academyStats = [
   { emoji: "🎓", label: "100+ Students Taught" },
+  { emoji: "🌍", label: "50+ Online Learners" },
   { emoji: "📍", label: "Aboru, Lagos" },
   { emoji: "💻", label: "Physical & Online" },
-  { emoji: "📖", label: "Arabic & Islamic Studies" },
 ];
 
 const galleryPhotos = [
@@ -53,6 +52,7 @@ export default function AcademyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-4xl px-6 pb-16 pt-16 text-center lg:pb-24 lg:pt-24">
@@ -94,11 +94,12 @@ export default function AcademyPage() {
           </Reveal>
           <Reveal delay={260}>
             <p className="mx-auto mt-6 max-w-xl leading-relaxed text-ink/65 dark:text-beige-100/65">
-              Founded and directed by Abubakar, Abdulahi Olayinka (Ustaz Abdullah), Al-Mafaazat trains
-              students of all ages in Arabic Language, Qur&apos;anic Education and Islamic Studies, from our
-              centre in Aboru, Lagos, and online.
+              Founded and directed by Abubakar, Abdulahi Olayinka (Ustaz Abdullah), Al-Mafaazat
+              trains students of all ages in Arabic Language, Qur&apos;anic Education and Islamic
+              Studies, from our centre in Aboru, Lagos, and online.
             </p>
           </Reveal>
+
           <Reveal delay={320}>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
               <a
@@ -109,9 +110,34 @@ export default function AcademyPage() {
               >
                 Register Now <ExternalLink size={15} />
               </a>
-              <a href="#programmes" className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3.5 text-sm text-ink hover:border-gold-500 dark:border-beige-100/15 dark:text-beige-100">
-                View Programmes
+              <a
+                href={`https://wa.me/${site.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3.5 text-sm font-medium text-ink hover:border-gold-500 dark:border-beige-100/15 dark:text-beige-100"
+              >
+                <MessageCircle size={15} /> Ask on WhatsApp
               </a>
+            </div>
+
+            {/* Form journey note */}
+            <div className="mx-auto mt-6 max-w-lg rounded-xl border border-ink/10 bg-beige-100/60 p-4 text-left dark:border-beige-100/10 dark:bg-emerald-900/30">
+              <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold-600 dark:text-gold-300">
+                What happens after you register
+              </p>
+              <div className="space-y-2">
+                {[
+                  "You will receive a reply within 2 working days",
+                  "Registration is an expression of interest, not a final enrolment",
+                  "Current class schedules and fees will be shared after your submission",
+                  "Children's enrolments require a parent or guardian to register",
+                ].map((s) => (
+                  <div key={s} className="flex items-start gap-2 text-xs text-ink/65 dark:text-beige-100/65">
+                    <CheckCircle size={12} className="mt-0.5 shrink-0 text-gold-500" />
+                    {s}
+                  </div>
+                ))}
+              </div>
             </div>
           </Reveal>
         </div>
@@ -137,15 +163,17 @@ export default function AcademyPage() {
       <section className="mx-auto grid max-w-6xl gap-12 px-6 py-24 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <Reveal>
-            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-gold-600 dark:text-gold-300">About the Centre</p>
+            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-gold-600 dark:text-gold-300">
+              About the Centre
+            </p>
             <h2 className="font-display text-3xl font-medium text-ink dark:text-beige-100 sm:text-4xl">
               A structured home for Arabic and Islamic learning.
             </h2>
             <p className="mt-5 leading-relaxed text-ink/65 dark:text-beige-100/65">
-              Al-Mafaazat was founded to give students a genuine grounding in Arabic Language and Islamic
-              Studies, taught the way it was taught to us: with method, patience, and continuous
-              assessment, not memorisation for its own sake. Every class, physical or online, follows a
-              structured curriculum from first principles through advanced study.
+              Al-Mafaazat was founded to give students a genuine grounding in Arabic Language and
+              Islamic Studies, taught the way it was taught to us: with method, patience and
+              continuous assessment. Every class, physical or online, follows a structured curriculum
+              from first principles through advanced study.
             </p>
           </Reveal>
         </div>
@@ -179,7 +207,10 @@ export default function AcademyPage() {
       {/* WHY CHOOSE US */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <Reveal>
-          <SectionHeading eyebrow="Why Al-Mafaazat" title="Built for real progress, not just attendance" />
+          <SectionHeading
+            eyebrow="Why Al-Mafaazat"
+            title="Built for real progress, not just attendance"
+          />
         </Reveal>
         <div className="mt-12">
           <FeatureGrid />
@@ -192,7 +223,13 @@ export default function AcademyPage() {
           {galleryPhotos.map((p, i) => (
             <Reveal key={p.src} delay={i * 70}>
               <div className="overflow-hidden rounded-2xl border border-ink/10 dark:border-beige-100/10">
-                <Image src={p.src} alt={p.alt} width={1290} height={1290} className="h-56 w-full object-cover" />
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  width={1290}
+                  height={1290}
+                  className="h-56 w-full object-cover"
+                />
               </div>
             </Reveal>
           ))}
@@ -216,12 +253,15 @@ export default function AcademyPage() {
       <section className="mx-auto max-w-6xl px-6 py-24">
         <Reveal>
           <div className="rounded-3xl bg-emerald-900 p-10 text-center lg:p-16">
-            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-gold-300">Enrolment Open</p>
+            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-gold-300">
+              Enrolment Open
+            </p>
             <h2 className="font-display text-2xl font-medium text-beige-100 sm:text-3xl">
               Begin your Arabic and Islamic education.
             </h2>
             <p className="mx-auto mt-3 max-w-md text-sm text-beige-100/70">
-              Register your interest and our team will follow up with current class schedules and fees.
+              Register your interest and our team will follow up with current class schedules and
+              fees within 2 working days.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <a
@@ -239,6 +279,14 @@ export default function AcademyPage() {
                 <Mail size={15} /> Email the Centre
               </a>
             </div>
+            <p className="mt-4 text-xs text-beige-100/40">
+              Registering is an expression of interest only. Your information is used only to
+              respond to your enquiry. See our{" "}
+              <Link href="/privacy-policy" className="underline underline-offset-2">
+                Privacy Policy
+              </Link>
+              .
+            </p>
           </div>
         </Reveal>
       </section>
