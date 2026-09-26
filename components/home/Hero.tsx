@@ -10,22 +10,21 @@ export function Hero() {
         <div className="lg:col-span-3">
           <Reveal>
             <p className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-gold-600 dark:text-gold-300">
-              Chief Imam · Educator · Researcher · Lagos, Nigeria
+              Chief Imam · Educator · Learning Design &amp; Technology · Researcher
             </p>
           </Reveal>
           <Reveal delay={80}>
             <h1 className="font-display text-[clamp(2.3rem,5vw,3.6rem)] font-medium leading-[1.08] tracking-tight text-ink dark:text-beige-100">
               Bridging Islamic Scholarship,{" "}
-              <span className="italic text-emerald-800 dark:text-emerald-600">Education</span> and Research
-              with Technology.
+              <span className="italic text-emerald-800 dark:text-emerald-600">Learning</span>,
+              Assessment and Technology.
             </h1>
           </Reveal>
           <Reveal delay={160}>
             <p className="mt-6 max-w-xl leading-relaxed text-ink/65 dark:text-beige-100/65">
-              ABUBAKAR, Abdulahi Olayinka (Ustaz Abdullah), an Islamic scholar, educator, researcher and
-              public speaker dedicated to advancing Islamic education through research, teaching and
-              technology. My work focuses on developing learners, empowering educators, and contributing to
-              communities through authentic knowledge, educational innovation and lifelong learning.
+              Abubakar, Abdulahi Olayinka (Ustaz Abdullah) designs learning experiences, trains
+              educators, and builds practical digital tools that extend teaching beyond the
+              classroom — from traditional Madrasahs to online learning environments.
             </p>
           </Reveal>
           <Reveal delay={240}>
@@ -55,7 +54,7 @@ export function Hero() {
           <div className="relative z-10 h-56 w-56 overflow-hidden rounded-full border border-ink/10 shadow-xl shadow-emerald-950/10 dark:border-beige-100/10">
             <Image
               src="/images/portrait-hero.jpg"
-              alt="Portrait of Abubakar, Abdulahi Olayinka"
+              alt="Abubakar, Abdulahi Olayinka"
               width={448}
               height={624}
               className="h-full w-full object-cover"

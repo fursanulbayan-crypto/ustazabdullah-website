@@ -6,23 +6,23 @@ import { ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Islamic scholar, educator, researcher and technologist. Chief Imam and founder of Al-Mafaazat Training Centre, Lagos. Building at the intersection of classical scholarship and modern innovation.",
+    "Islamic scholar, educator, researcher and learning professional. Chief Imam and founder of Al-Mafaazat Training Centre, Lagos, working at the intersection of education, instructional design, assessment and technology.",
 };
 
 const milestones = [
   { year: "2017", detail: "Began teaching Arabic Language and Islamic Studies at Markaz Sahadat Alimosho, Lagos." },
   { year: "2019", detail: "Founded Al-Mafaazat Arabic and Islamic Training Centre and assumed role of Chief Imam, Al-Mafaazat Central Mosque, Aboru, Lagos." },
-  { year: "2021–2025", detail: "Bachelor of Arts in Education and Islamic Studies, Al-Hikmah University, Ilorin. First Class Honours." },
-  { year: "2022", detail: "Launched Al-Mafaazat Online Academy, now serving learners across multiple countries." },
-  { year: "2025", detail: "Graduated as Best Student, Institute of Education; Best Student, Department of Arts and Social Sciences Education; Top One Percent Student of the Year, Al-Hikmah University. TRCN certified." },
-  { year: "2026", detail: "Certified SDG 16 Advocate, Cohort 8 (Certificate of Excellence, SDSN). Certifications in AI ethics, data analytics and digital skills from DataCamp, Accenture, UNICEF Agora, FutureLearn and the ESG Institute." },
+  { year: "2021–2025", detail: "Bachelor of Arts in Education and Islamic Studies, Al-Hikmah University, Ilorin. First Class Honours. Best Graduating Student, Institute of Education." },
+  { year: "2022", detail: "Launched Al-Mafaazat Online Academy, now serving over 50 learners across multiple countries." },
+  { year: "2025", detail: "TRCN certified as a professional teacher." },
+  { year: "2026", detail: "Certified SDGs Advocate, Cohort 8 (Certificate of Excellence, SDSN). Certifications in AI ethics, data analytics, SQL and digital skills. Began coursework in instructional design and e-learning development." },
 ];
 
 const stats = [
   { value: "7+", label: "Years Teaching" },
   { value: "6+", label: "Years Leading the Mosque" },
   { value: "100+", label: "Students Taught" },
-  { value: "100+", label: "Lectures Delivered" },
+  { value: "50+", label: "Online Learners" },
 ];
 
 export default function AboutPage() {
@@ -37,10 +37,15 @@ export default function AboutPage() {
         </h1>
         <p className="mt-2 font-mono text-sm text-ink/50 dark:text-beige-100/50">Ustaz Abdullah</p>
         <p className="mt-8 text-lg leading-relaxed text-ink/75 dark:text-beige-100/75 max-w-2xl">
-          An Islamic scholar, educator, researcher and technologist building at the intersection of
-          classical scholarship and modern innovation. Dedicated to developing structured learning
-          systems, empowering teachers through evidence-based practice, and serving communities with
-          knowledge that is both authentic and practically useful.
+          An Islamic scholar, educator, researcher and learning professional working at the
+          intersection of education, instructional design, assessment and technology. His work
+          centres on a simple question: how can learning be designed better, delivered more
+          effectively, and measured more meaningfully?
+        </p>
+        <p className="mt-4 leading-relaxed text-ink/65 dark:text-beige-100/65 max-w-2xl">
+          From traditional classrooms and Madrasahs to online learning environments, he designs
+          learning experiences, trains educators, develops assessment systems, and builds practical
+          digital tools that extend learning beyond the classroom.
         </p>
       </div>
 
@@ -76,84 +81,139 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* SECTION 1: SCHOLARSHIP AND LEADERSHIP */}
+      {/* SECTION 1: SCHOLARSHIP AND EDUCATIONAL LEADERSHIP */}
       <div className="mb-16 pb-16 border-b border-ink/10 dark:border-beige-100/10">
         <p className="font-mono text-xs uppercase tracking-widest text-gold-600 dark:text-gold-300 mb-3">
-          Scholarship & Leadership
+          Scholarship &amp; Educational Leadership
         </p>
         <h2 className="font-display text-2xl font-medium text-ink dark:text-beige-100 mb-5">
           Where the mosque meets the classroom
         </h2>
         <div className="space-y-4 text-sm leading-relaxed text-ink/70 dark:text-beige-100/70">
           <p>
-            Ustaz Abdullah leads as Chief Imam of Al-Mafaazat Central Mosque in Aboru, Lagos, a
-            CAC-registered institution where he provides spiritual guidance through weekly khutbahs and
-            community counsel. In the classroom, he is a specialist in Arabic Language (Nahw, Sarf and
-            Arabic Prosody) and Qur'anic Education. Since founding Al-Mafaazat Arabic and Islamic Training
-            Centre in 2019, he has trained over 100 students across physical and online settings, with the
-            Al-Mafaazat Online Academy now extending that reach to learners across multiple countries.
+            Ustaz Abdullah serves as Chief Imam of Al-Mafaazat Central Mosque, Aboru, Lagos, where he
+            provides spiritual guidance through weekly khutbahs, counselling and community
+            engagement. He is also the Founder and Director of Al-Mafaazat Arabic and Islamic
+            Training Centre, established in 2019. Through its physical and online programmes, he has
+            taught Arabic, Qur&apos;anic and Islamic education to learners across different age groups
+            and learning environments.
+          </p>
+          <p>
+            His teaching specialisations include Arabic Language, Nahw, Sarf, Arabic Prosody
+            (&apos;Aruḍ), Qur&apos;an and Islamic Studies. His online teaching experience has also
+            exposed him to digital classrooms, remote instruction and technology-supported learning.
           </p>
           <p>
             He holds a First Class Bachelor of Arts in Education and Islamic Studies from Al-Hikmah
-            University, Ilorin, where he graduated as Best Student of the Institute of Education, Best
-            Student of the Department of Arts and Social Sciences Education, and recipient of the Top One
-            Percent Student of the Year award. He is a certified professional teacher registered with the
-            Teachers Registration Council of Nigeria (TRCN).
+            University, Ilorin, where he graduated as Best Graduating Student of the Institute of
+            Education. He is also a professionally certified teacher registered with the Teachers
+            Registration Council of Nigeria (TRCN).
           </p>
         </div>
       </div>
 
-      {/* SECTION 2: RESEARCH AND MEASUREMENT */}
+      {/* SECTION 2: INSTRUCTIONAL DESIGN, LEARNING AND ASSESSMENT */}
       <div className="mb-16 pb-16 border-b border-ink/10 dark:border-beige-100/10">
         <p className="font-mono text-xs uppercase tracking-widest text-gold-600 dark:text-gold-300 mb-3">
-          Research & Measurement
+          Instructional Design, Learning &amp; Assessment
         </p>
         <h2 className="font-display text-2xl font-medium text-ink dark:text-beige-100 mb-5">
-          Rigour applied to Islamic education
+          Evidence as the point of assessment, not its ending
         </h2>
         <div className="space-y-4 text-sm leading-relaxed text-ink/70 dark:text-beige-100/70">
           <p>
-            His research sits at the boundary of Islamic education and psychometrics. Using quantitative
-            methods, Likert-scale instruments and SPSS-based analysis, he investigates how structured
-            Qur'anic memorisation shapes academic performance, how Islamic education influences moral
-            development, and how rigorous measurement can make teaching more precise and more accountable.
+            His professional interests are increasingly focused on instructional design, e-learning,
+            learning management systems, training and development, educational assessment and
+            learning analytics. He is particularly interested in translating sound educational
+            principles into practical learning experiences, whether in schools, Madrasahs, NGOs,
+            professional training programmes or digital learning environments.
           </p>
           <p>
-            He is building toward postgraduate study in Educational Measurement and Evaluation, bringing
-            the same standards that govern good research into the classrooms and institutions he serves.
+            His background in assessment and educational research gives this work an additional
+            dimension. He has designed research instruments, conducted quantitative educational
+            research, and used SPSS, statistical analysis and data visualisation to investigate
+            educational outcomes. Rather than treating assessment as simply the final stage of
+            teaching, he sees it as a source of evidence for improving learning.
           </p>
         </div>
       </div>
 
-      {/* SECTION 3: TECHNOLOGY AND INNOVATION */}
+      {/* SECTION 3: RESEARCH AND EVIDENCE */}
       <div className="mb-16 pb-16 border-b border-ink/10 dark:border-beige-100/10">
         <p className="font-mono text-xs uppercase tracking-widest text-gold-600 dark:text-gold-300 mb-3">
-          Technology & Innovation
+          Research &amp; Evidence
         </p>
         <h2 className="font-display text-2xl font-medium text-ink dark:text-beige-100 mb-5">
-          Building tools that serve learners
+          Islamic education meets educational measurement
         </h2>
         <div className="space-y-4 text-sm leading-relaxed text-ink/70 dark:text-beige-100/70">
           <p>
-            He believes the right tools, used with scholarly discipline, make better educators and better
-            learners. He builds educational software for Arabic and English learning, applies AI tools
-            practically in his teaching and institutional work, and holds certifications in AI ethics, data
-            analytics, SQL and digital skills from DataCamp, Accenture, UNICEF Agora, FutureLearn and the
-            ESG Institute. He maintains both his personal website and the Al-Mafaazat Online Academy on
-            modern web infrastructure.
+            His research interests sit at the intersection of Islamic education, educational
+            measurement and learner outcomes. His undergraduate research examined the relationship
+            between Qur&apos;anic memorisation and academic performance among Muslim secondary school
+            students, using quantitative methods, structured instruments and statistical analysis.
           </p>
           <p>
-            As a certified SDG 16 Advocate (Cohort 8, Certificate of Excellence, SDSN), he leads youth
-            peacebuilding and community outreach in Alimosho LGA, demonstrating that authentic Islamic
-            values and sustainable development goals reinforce rather than contradict each other.
+            He is continuing to develop expertise in educational measurement and evaluation,
+            assessment design, reliability, data analysis and evidence-informed educational practice,
+            with the long-term goal of contributing to better assessment and learning systems.
+          </p>
+        </div>
+      </div>
+
+      {/* SECTION 4: TECHNOLOGY AND INNOVATION */}
+      <div className="mb-16 pb-16 border-b border-ink/10 dark:border-beige-100/10">
+        <p className="font-mono text-xs uppercase tracking-widest text-gold-600 dark:text-gold-300 mb-3">
+          Technology &amp; Innovation
+        </p>
+        <h2 className="font-display text-2xl font-medium text-ink dark:text-beige-100 mb-5">
+          Building practical solutions, not just discussing them
+        </h2>
+        <div className="space-y-4 text-sm leading-relaxed text-ink/70 dark:text-beige-100/70">
+          <p>
+            His projects include Qalam, a typing trainer for Arabic and English learners, and an
+            interactive Nahw trainer based on Al-Tatbiq Al-Nahwi. He has also worked on digital
+            learning initiatives that have taken traditional Arabic and Islamic education into
+            structured online environments.
+          </p>
+          <p>
+            His professional development includes training and certifications in data analytics,
+            SQL, AI ethics, digital skills, educational technology and sustainable development. He is
+            particularly interested in the responsible use of AI and data to improve teaching,
+            assessment and learning. As an SDSN Nigeria SDGs Advocate, Cohort 8, he has also applied
+            his learning through community-focused work, including youth peacebuilding and
+            values-based outreach.
           </p>
         </div>
         <Link
           href="/tools"
           className="mt-6 inline-flex items-center gap-2 text-sm text-emerald-800 underline underline-offset-4 dark:text-gold-300"
         >
-          Explore educational tools built by Ustaz Abdullah <ArrowRight size={14} />
+          Explore tools built by Ustaz Abdullah <ArrowRight size={14} />
         </Link>
+      </div>
+
+      {/* WHAT HE IS BUILDING TOWARDS */}
+      <div className="mb-16 pb-16 border-b border-ink/10 dark:border-beige-100/10">
+        <p className="font-mono text-xs uppercase tracking-widest text-gold-600 dark:text-gold-300 mb-3">
+          What Comes Next
+        </p>
+        <h2 className="font-display text-2xl font-medium text-ink dark:text-beige-100 mb-5">
+          Instructional design, digital learning, assessment, data and technology
+        </h2>
+        <div className="space-y-4 text-sm leading-relaxed text-ink/70 dark:text-beige-100/70">
+          <p>
+            The next stage of his work brings these strands together. He is building the expertise
+            to design effective learning experiences, support educators, develop digital training,
+            work with learning management systems, and use evidence to understand whether learning
+            is actually taking place.
+          </p>
+          <p>
+            His work spans Islamic education and the wider learning ecosystem, with an interest in
+            opportunities across education, e-learning, learning and development, training, NGOs and
+            digital learning.
+          </p>
+        </div>
       </div>
 
       {/* TIMELINE */}
@@ -173,15 +233,16 @@ export default function AboutPage() {
 
       {/* INVITATION */}
       <div className="rounded-3xl bg-emerald-900 p-10 text-center lg:p-14">
-        <p className="mb-3 font-mono text-xs uppercase tracking-widest text-gold-300">An Invitation</p>
+        <p className="mb-3 font-mono text-xs uppercase tracking-widest text-gold-300">Let&apos;s Work Together</p>
         <h2 className="font-display text-2xl font-medium text-beige-100 sm:text-3xl">
           There is a conversation worth having.
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-beige-100/70">
-          Whether you are a researcher seeking a collaborator at the edge of Islamic education and
-          technology, an institution looking for a speaker on leadership, education or AI, or a student
-          ready to learn Arabic or Qur'an, based in Lagos and working globally, Ustaz Abdullah is actively
-          building what comes next in Islamic education.
+          Whether you are looking for an instructional designer, trainer, education researcher,
+          learning professional, speaker or collaborator, there may be an opportunity to work
+          together — for teacher training, digital learning projects, educational research,
+          assessment initiatives, Islamic education programmes, community development or speaking
+          engagements.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Link

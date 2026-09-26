@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ExternalLink, Download, ArrowRight, Clock } from "lucide-react";
+import { ExternalLink, ArrowRight, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Educational Tools",
   description:
-    "Free educational tools built by Ustaz Abdullah: interactive Arabic grammar trainer, Qalam typing app, and more in development.",
+    "Free educational tools built by Ustaz Abdullah: an interactive Arabic Nahw trainer, Qalam typing app, and more in development.",
 };
 
 const tools = [
@@ -13,31 +13,27 @@ const tools = [
     status: "live" as const,
     tag: "Available Now",
     name: "أستاذ عبدالله | التطبيق النحوي",
-    nameAr: "التطبيق النحوي",
     description:
       "An interactive Nahw (Arabic grammar) trainer built on the index of Al-Tatbiq Al-Nahwi by Dr. Abde Rajihi. Enter your name, choose your class level, and work through structured lessons with multiple question types: multiple choice, true/false, matching, and word ordering. Points, stars and badges track your progress.",
     audience: "Arabic students · Nahw · Secondary level",
-    features: ["3 class levels", "10 lessons per level", "4 question types", "Progress tracking", "Based on Al-Tatbiq Al-Nahwi"],
-    action: { label: "Launch Tool", href: "/tools/nahw-sarf", external: false },
+    features: ["3 class levels", "Structured lessons", "4 question types", "Progress tracking", "Based on Al-Tatbiq Al-Nahwi"],
+    action: { label: "Launch Tool", href: "/tools/nahw-sarf.html", external: true },
   },
   {
-    status: "download" as const,
-    tag: "Download for PC",
+    status: "live" as const,
+    tag: "Available Now",
     name: "Qalam — Arabic & English Typing Trainer",
-    nameAr: "قلم",
     description:
-      "A structured typing trainer for Arabic and English, built around authentic Qur'an and Hadith sources. Practice with a classic Arabic 101 keyboard layout or English QWERTY. Choose your level, switch between Scribe and Race modes, and build real typing fluency in both scripts.",
+      "A free bilingual typing trainer teaching the real Arabic 101 and QWERTY keyboards. Includes Scribe and Race practice modes, and authentic Qur'anic verse typing. Works as an installable app directly from your browser, no account and no file download needed.",
     audience: "Arabic learners · Typists · Students",
-    features: ["Arabic 101 & QWERTY layouts", "Beginner / Intermediate / Pro", "Scribe and Race modes", "Authentic Qur'anic sources", "Light / Dark mode"],
-    action: { label: "Download for PC", href: "#", external: false },
-    note: "Windows download coming soon. Try the web version at qalam-swart.vercel.app",
-    webUrl: "https://qalam-swart.vercel.app",
+    features: ["Arabic 101 & QWERTY layouts", "Scribe and Race modes", "Qur'anic verse typing", "Installable app (PWA)", "No account needed"],
+    action: { label: "Open Qalam", href: "https://qalam-swart.vercel.app", external: true },
+    installNote: true,
   },
   {
     status: "development" as const,
     tag: "In Development",
     name: "Islamic Studies Quiz Builder",
-    nameAr: "بانى الاختبارات",
     description:
       "A tool for Islamic Studies teachers to generate structured assessments quickly. Enter a topic, class level and question count and receive a ready-to-use quiz with multiple question formats. Built to support the Nigerian curriculum and reduce teacher workload.",
     audience: "Islamic Studies teachers · Educators",
@@ -51,11 +47,6 @@ const STATUS_STYLES = {
     badge: "bg-emerald-900/10 text-emerald-800 dark:bg-emerald-400/10 dark:text-emerald-400",
     dot: "bg-emerald-500",
     border: "border-gold-400/40 hover:border-gold-500",
-  },
-  download: {
-    badge: "bg-emerald-900/10 text-emerald-800 dark:bg-emerald-400/10 dark:text-emerald-400",
-    dot: "bg-gold-500",
-    border: "border-ink/10 hover:border-gold-400 dark:border-beige-100/10",
   },
   development: {
     badge: "bg-ink/5 text-ink/50 dark:bg-beige-100/5 dark:text-beige-100/50",
@@ -78,21 +69,20 @@ export default function ToolsPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-xl leading-relaxed text-ink/65 dark:text-beige-100/65">
             Free tools for Arabic learning, typing practice and Islamic Studies, designed from real
-            classroom experience. Use them directly in your browser or download them for offline use.
+            classroom experience. Use them directly in your browser, no installation required.
           </p>
         </div>
       </section>
 
       {/* TOOLS GRID */}
       <section className="mx-auto max-w-5xl px-6 py-20 space-y-8">
-        {tools.map((tool, i) => {
+        {tools.map((tool) => {
           const styles = STATUS_STYLES[tool.status];
           return (
             <div
               key={tool.name}
               className={`rounded-2xl border bg-white p-8 transition-colors dark:bg-emerald-900/30 ${styles.border}`}
             >
-              {/* Top row */}
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-widest ${styles.badge}`}>
@@ -107,7 +97,6 @@ export default function ToolsPage() {
                   </p>
                 </div>
 
-                {/* Action button */}
                 {tool.action && (
                   tool.action.external ? (
                     <a
@@ -118,12 +107,6 @@ export default function ToolsPage() {
                     >
                       <ExternalLink size={14} /> {tool.action.label}
                     </a>
-                  ) : tool.status === "download" ? (
-                    <div className="flex flex-col items-end gap-2 shrink-0">
-                      <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2.5 text-sm font-medium text-ink/40 dark:border-beige-100/15 dark:text-beige-100/40 cursor-not-allowed">
-                        <Download size={14} /> {tool.action.label}
-                      </span>
-                    </div>
                   ) : (
                     <Link
                       href={tool.action.href}
@@ -141,12 +124,10 @@ export default function ToolsPage() {
                 )}
               </div>
 
-              {/* Description */}
               <p className="mt-5 max-w-2xl text-sm leading-relaxed text-ink/65 dark:text-beige-100/65">
                 {tool.description}
               </p>
 
-              {/* Features */}
               <div className="mt-5 flex flex-wrap gap-2">
                 {tool.features.map((f) => (
                   <span
@@ -158,19 +139,17 @@ export default function ToolsPage() {
                 ))}
               </div>
 
-              {/* Qalam web version note */}
-              {"webUrl" in tool && tool.webUrl && (
-                <p className="mt-4 text-xs text-ink/45 dark:text-beige-100/45">
-                  PC download coming soon.{" "}
-                  <a
-                    href={tool.webUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-emerald-800 underline underline-offset-2 dark:text-gold-300"
-                  >
-                    Try the web version →
-                  </a>
-                </p>
+              {tool.installNote && (
+                <div className="mt-5 rounded-xl border border-ink/10 bg-beige-100/60 p-4 dark:border-beige-100/10 dark:bg-emerald-950/30">
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold-600 dark:text-gold-300">
+                    Install as an app (optional)
+                  </p>
+                  <ul className="space-y-1.5 text-xs text-ink/60 dark:text-beige-100/60">
+                    <li><strong className="text-ink/80 dark:text-beige-100/80">Desktop:</strong> look for the install icon in your browser&apos;s address bar</li>
+                    <li><strong className="text-ink/80 dark:text-beige-100/80">Android:</strong> open the menu and tap &ldquo;Add to Home Screen&rdquo;</li>
+                    <li><strong className="text-ink/80 dark:text-beige-100/80">iOS:</strong> in Safari, tap Share, then &ldquo;Add to Home Screen&rdquo; (no automatic prompt on iPhone)</li>
+                  </ul>
+                </div>
               )}
             </div>
           );

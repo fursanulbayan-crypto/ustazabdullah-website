@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
 import { navLinks, site } from "@/lib/data";
@@ -10,7 +10,9 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const [mobileGroup, setMobileGroup] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -18,30 +20,25 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
   const close = () => {
     setOpen(false);
-    setOpenGroup(null);
+    setMobileGroup(null);
   };
 
   return (
     <>
       <header
+        ref={navRef}
         className={cn(
           "sticky top-0 z-50 transition-all duration-300",
           scrolled
-            ? "border-b border-ink/10 bg-beige-50/90 backdrop-blur-md dark:border-beige-100/10 dark:bg-emerald-950/90"
+            ? "border-b border-ink/10 bg-beige-50/95 backdrop-blur-md dark:border-beige-100/10 dark:bg-emerald-950/95"
             : "border-b border-transparent bg-beige-50 dark:bg-emerald-950"
         )}
       >
@@ -64,19 +61,26 @@ export function Navbar() {
                     className="flex items-center gap-1 text-sm text-ink/70 hover:text-emerald-800 dark:text-beige-100/70 dark:hover:text-gold-300"
                     aria-expanded={openGroup === item.label}
                   >
-                    {item.label} <ChevronDown size={13} />
+                    {item.label}
+                    <ChevronDown
+                      size={13}
+                      className="transition-transform"
+                      style={{ transform: openGroup === item.label ? "rotate(180deg)" : "rotate(0deg)" }}
+                    />
                   </button>
                   {openGroup === item.label && (
-                    <div className="absolute left-0 top-full w-56 rounded-xl border border-ink/10 bg-beige-50 p-2 shadow-lg dark:border-beige-100/10 dark:bg-emerald-900">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-emerald-900/5 dark:text-beige-100/80 dark:hover:bg-beige-100/5"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                    <div className="absolute left-0 top-full pt-2 w-52">
+                      <div className="rounded-xl border border-ink/10 bg-beige-50 p-1.5 shadow-lg dark:border-beige-100/10 dark:bg-emerald-900">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="block rounded-lg px-3 py-2 text-sm text-ink/75 hover:bg-emerald-900/8 hover:text-emerald-800 dark:text-beige-100/75 dark:hover:bg-beige-100/8 dark:hover:text-gold-300"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -101,66 +105,86 @@ export function Navbar() {
               Book Me <ArrowUpRight size={14} />
             </Link>
             <button
-              className="lg:hidden p-2"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 dark:border-beige-100/10 lg:hidden"
               onClick={() => setOpen((o) => !o)}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="mobile-menu"
             >
-              {open ? <X size={22} /> : <Menu size={22} />}
+              {open ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile menu — FIXED overlay, does NOT push page content */}
+      {/* Mobile menu — fixed overlay, does NOT push page content down */}
       {open && (
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 z-40 bg-ink/20 backdrop-blur-sm dark:bg-emerald-950/60 lg:hidden"
+            className="fixed inset-0 z-40 bg-ink/30 backdrop-blur-sm lg:hidden"
             aria-hidden="true"
             onClick={close}
           />
-          {/* Drawer */}
+
+          {/* Drawer — slides down from below the header */}
           <div
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
-            className="fixed inset-x-0 top-[65px] z-50 max-h-[calc(100dvh-65px)] overflow-y-auto border-t border-ink/10 bg-beige-50 dark:border-beige-100/10 dark:bg-emerald-950 lg:hidden"
+            className="fixed inset-x-0 top-[65px] z-50 max-h-[calc(100dvh-65px)] overflow-y-auto border-t border-ink/10 bg-beige-50 shadow-xl dark:border-beige-100/10 dark:bg-emerald-950 lg:hidden"
           >
-            <nav className="flex flex-col px-6 py-5" aria-label="Mobile navigation">
-              {navLinks.map((item) => (
-                <div key={item.label}>
-                  <Link
-                    href={item.href}
-                    className="block py-3 text-base font-medium text-ink/80 dark:text-beige-100/80"
-                    onClick={close}
-                  >
-                    {item.label}
-                  </Link>
-                  {item.children && (
-                    <div className="mb-2 ml-3 flex flex-col border-l border-ink/10 pl-4 dark:border-beige-100/10">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="py-2 text-sm text-ink/60 dark:text-beige-100/60"
-                          onClick={close}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <div className="mt-4 border-t border-ink/10 pt-4 dark:border-beige-100/10">
+            <nav className="px-6 py-4" aria-label="Mobile navigation">
+              {navLinks.map((item) =>
+                item.children ? (
+                  <div key={item.label} className="border-b border-ink/8 dark:border-beige-100/8 last:border-0">
+                    <button
+                      onClick={() => setMobileGroup(mobileGroup === item.label ? null : item.label)}
+                      className="flex w-full items-center justify-between py-3.5 text-left text-base font-medium text-ink dark:text-beige-100"
+                      aria-expanded={mobileGroup === item.label}
+                    >
+                      {item.label}
+                      <ChevronDown
+                        size={16}
+                        className="text-ink/40 dark:text-beige-100/40 transition-transform"
+                        style={{ transform: mobileGroup === item.label ? "rotate(180deg)" : "rotate(0deg)" }}
+                      />
+                    </button>
+                    {mobileGroup === item.label && (
+                      <div className="mb-3 ml-1 space-y-0.5">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={close}
+                            className="block rounded-lg px-3 py-2.5 text-sm text-ink/65 hover:bg-emerald-900/5 hover:text-emerald-800 dark:text-beige-100/65 dark:hover:text-gold-300"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div key={item.href} className="border-b border-ink/8 dark:border-beige-100/8 last:border-0">
+                    <Link
+                      href={item.href}
+                      onClick={close}
+                      className="block py-3.5 text-base font-medium text-ink dark:text-beige-100"
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
+                )
+              )}
+
+              {/* Book Me in mobile menu too */}
+              <div className="mt-4 pb-2">
                 <Link
                   href="/book"
-                  className="inline-flex items-center gap-1.5 rounded-full bg-emerald-900 px-5 py-2.5 text-sm font-medium text-beige-100"
                   onClick={close}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-900 py-3 text-sm font-medium text-beige-100"
                 >
                   Book Me <ArrowUpRight size={14} />
                 </Link>
