@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
-import { navLinks, site } from "@/lib/data";
+import { navLinks } from "@/lib/data";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -20,7 +21,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -43,8 +43,24 @@ export function Navbar() {
         )}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link href="/" className="font-display text-lg font-semibold text-ink dark:text-beige-100" onClick={close}>
-            <span className="text-gold-500">A.</span> {site.shortName}
+          {/* Logo lockup — monogram + "Ustaz Abdullah" wordmark, swaps for light/dark mode */}
+          <Link href="/" onClick={close} className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Ustaz Abdullah"
+              width={364}
+              height={90}
+              className="h-9 w-auto dark:hidden"
+              priority
+            />
+            <Image
+              src="/logo-dark.png"
+              alt="Ustaz Abdullah"
+              width={364}
+              height={90}
+              className="hidden h-9 w-auto dark:block"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -120,14 +136,12 @@ export function Navbar() {
       {/* Mobile menu — fixed overlay, does NOT push page content down */}
       {open && (
         <>
-          {/* Backdrop */}
           <div
             className="fixed inset-0 z-40 bg-ink/30 backdrop-blur-sm lg:hidden"
             aria-hidden="true"
             onClick={close}
           />
 
-          {/* Drawer — slides down from below the header */}
           <div
             id="mobile-menu"
             role="dialog"
@@ -179,7 +193,6 @@ export function Navbar() {
                 )
               )}
 
-              {/* Book Me in mobile menu too */}
               <div className="mt-4 pb-2">
                 <Link
                   href="/book"
